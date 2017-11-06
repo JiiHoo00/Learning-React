@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
 
-class Square extends React.Component {
-  render() {
-    return (
-      <button className="square" onClick={() => this.props.onClick()}>
-        {this.props.value}
-      </button>
-    );
-  }
+/*
+Square is a functional component. They are used when a component only needs a render()-method.
+Note the difference props is passed as a parameter, compared to an attribute in class component.
+*/
+function Square(props) {
+  return (
+    <button className="square" onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
 }
 
 class Board extends React.Component {
