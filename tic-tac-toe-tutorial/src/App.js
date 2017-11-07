@@ -60,10 +60,17 @@ class Board extends React.Component {
     );
   }
 }
-/* Needed to have export and default for this class, 
-   because in React only one component is imported per file and it is marked with default
+/*
+  Game needed to have export and default for this class,
+  because in React only one component is imported per file and it is marked with default
 */
 export default class Game extends React.Component {
+  /*
+    props are basically parameters that are given to the Board component see Game.render() to see how
+    props are made available by React.Component-constructor and are immutable.
+    state is components mutable state, but should be changed only with setState() so React knows and can optimise the changes
+    if component needs state it will a constructor like below.
+  */
   constructor(props) {
     super(props);
     this.state = {
@@ -107,6 +114,9 @@ export default class Game extends React.Component {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
+    /*
+    In the Board-tag, squares and onClick are props that are given values, see Game constructor for explanation of state and props
+    */
     return (
       <div className="game">
         <div className="game-board">
