@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Navbar from './Navbar';
-import Form from './Form';
-import List from './List';
+import RegistrationForm from './RegistrationForm';
+import RegistrationList from './List';
 
 import './App.css';
 
@@ -15,8 +15,8 @@ class App extends Component {
           <Navbar />
         </header>
         <Switch>
-          <Route exact={true} path="/" component={List} />
-          <Route path="/new" component={Form} />
+          <Route exact={true} path="/" component={RegistrationList} />
+          <Route path="/new" component={RegistrationForm} />
         </Switch>
       </div>
     );

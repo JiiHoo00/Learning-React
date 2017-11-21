@@ -1,7 +1,7 @@
 import React from 'react';
 
-function List() {
+function RegistrationList() {
   return <p>list here</p>;
 }
 
-export default List;
+export default RegistrationList;

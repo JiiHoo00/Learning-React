@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Form extends Component{
+class RegistrationForm extends Component {
   render() {
     return (
       <div class="panel panel-default">
@@ -8,7 +8,7 @@ class Form extends Component{
           <strong>Ilmoittautumislomake</strong>
         </div>
         <div class="panel-body">
-          <form role="form">
+          <form>
             <div class="form-group">
               <label for="nimi">Name:</label>
               <input type="text" class="form-control" id="nimi" placeholder="name" />
@@ -37,4 +37,4 @@ class Form extends Component{
     );
   }
 }
-export default Form;
+export default RegistrationForm;
