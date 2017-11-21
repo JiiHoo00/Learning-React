@@ -1,40 +1,106 @@
+import { add_registration } from '../actions';
+
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+
+import {
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  HelpBlock,
+  Checkbox,
+} from 'react-bootstrap';
+
+function FieldGroup({ id, label, help, ...props }) {
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} />
+      {help && <HelpBlock>{help}</HelpBlock>}
+    </FormGroup>
+  );
+}
+
 class RegistrationForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      foodChoice: 'Fish',
+      goingToSauna: false,
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    console.log(this.state);
+    const name = event.target.type === 'checkbox' ? 'goingToSauna' : event.target.id;
+    const value =
+      event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
     return (
-      <div class="panel panel-default">
-        <div class="panel-heading">
+      <div>
+        <div>
           <strong>Ilmoittautumislomake</strong>
         </div>
-        <div class="panel-body">
-          <form>
-            <div class="form-group">
-              <label for="nimi">Name:</label>
-              <input type="text" class="form-control" id="nimi" placeholder="name" />
+        <div>
+          <div>
+            <FieldGroup
+              id="name"
+              type="text"
+              label="Name:"
+              placeholder="name"
+              onChange={this.handleInputChange}
+            />
 
-              <label for="email">Email:</label>
-              <input type="email" class="form-control" id="email" placeholder="email" />
+            <FieldGroup
+              id="email"
+              type="email"
+              label="Email:"
+              placeholder="email"
+              onChange={this.handleInputChange}
+            />
 
-              <label for="ruoka">Food Choice:</label>
-              <select class="form-control" id="ruoka" ng-model="formdata.ruoka">
+            <FormGroup controlId="foodChoice" onChange={this.handleInputChange}>
+              <ControlLabel>Food Choice:</ControlLabel>
+              <FormControl componentClass="select" placeholder="select">
                 <option>Fish</option>
                 <option>Meat</option>
                 <option>Vegan</option>
-              </select>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" /> Going to sauna
-                </label>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-default">
-              Submit
-            </button>
-          </form>
+              </FormControl>
+            </FormGroup>
+
+            <Checkbox
+              label="Going to sauna"
+              onChange={this.handleInputChange}
+              key="goingToSauna"
+            >
+              Going to sauna
+            </Checkbox>
+          </div>
+          <button
+            onClick={() => {
+              this.props.add_registration(this.state);
+            }}
+          >
+            Submit
+          </button>
         </div>
       </div>
     );
   }
 }
-export default RegistrationForm;
+export default connect(
+  state => {
+    return {};
+  },
+  { add_registration }
+)(RegistrationForm);

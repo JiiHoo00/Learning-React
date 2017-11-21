@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Navbar from './Navbar';
+import Navigation from './Navigation';
 import RegistrationForm from './RegistrationForm';
 import RegistrationList from './List';
 
@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <Navbar />
+          <Navigation />
         </header>
         <Switch>
           <Route exact={true} path="/" component={RegistrationList} />
