@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
-
-import './App.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -26,28 +24,4 @@ function Navbar() {
   );
 }
 
-function Form() {
-  return <p>form here</p>;
-}
-
-function List() {
-  return <p>list here</p>;
-}
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header>
-          <Navbar />
-        </header>
-        <Switch>
-          <Route exact={true} path="/" component={List} />
-          <Route path="/new" component={Form} />
-        </Switch>
-      </div>
-    );
-  }
-}
-
-export default App;
+export default Navbar;
